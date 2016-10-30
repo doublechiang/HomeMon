@@ -9,4 +9,8 @@ Rabbit MQ server default is for local access only.
 ### create rabbitmq server username/password for remote access.
 Craete user by rabbitmqctl 
 
-## Graphana 
+## Install Grafana
+## Install InfluxDB
+CREATE DATABASE thermal
+
+

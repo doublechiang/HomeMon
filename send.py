@@ -20,9 +20,16 @@ connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 channel.queue_declare(queue='thermal')
 
-sample = ['sensor1', 25]
+data = dict()
+data['measurement'] = 'thermal'
+data_tags = dict()
+data_tags['sensor'] = 'sensor1'
+data_fields = dict()
+data_fields['value'] = 24
+data['tags'] = data_tags
+data['fields'] = data_fields
 
-message = json.JSONEncoder().encode(sample)
+message = json.JSONEncoder().encode(data)
 channel.basic_publish(exchange='',
                       routing_key='thermal',
                       body=message)
