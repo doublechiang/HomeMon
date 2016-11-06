@@ -6,6 +6,7 @@ case $1 in
     ;;
   stop)
     rabbitmqctl stop
+    killall influxd
     ;;
   *)
     echo "$0 {start|stop}"
