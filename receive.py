@@ -4,16 +4,16 @@ import json
 from influxdb import InfluxDBClient
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-    host='localhost'))
+    host='192.168.1.50'))
 channel = connection.channel()
 
 channel.queue_declare(queue='thermal')
 
 
 def callback(ch, method, properties, body):
-    print "Received Str %s" % body
     record = json.loads(body)
     print(" [x] Received %r" % repr(record))
+    points = list()
     points = [record]
     client.write_points(points)
 

@@ -21,11 +21,11 @@ channel = connection.channel()
 channel.queue_declare(queue='thermal')
 
 data = dict()
-data['measurement'] = 'thermal'
 data_tags = dict()
-data_tags['sensor'] = 'sensor1'
 data_fields = dict()
+data_tags['sensor'] = 'sensor1'
 data_fields['value'] = 24
+data['measurement'] = 'thermal'
 data['tags'] = data_tags
 data['fields'] = data_fields
 
