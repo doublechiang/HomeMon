@@ -2,6 +2,8 @@
 recording the collect the temperature from sensor and saved in database, generate the plot
 
 ## Server Installation.
+$ brew install supervisor
+
 ### Install RabbitMQ server
 Rabbit MQ server default is for local access only.
 [MacOS installed via brew bind local only](https://superuser.com/questions/464311/open-port-5672-tcp-for-access-to-rabbitmq-on-mac/516469#516469)
