@@ -19,11 +19,12 @@ class ThermalLogging:
                         column('temp')
     )
 
-    def startCollectTemp(self):
-        w = weather.Weather('95132,us')
+    def startCollectTemp(self, loc):
+        w = weather.Weather(loc)
         local_temp = w.getCurrentTemp()
+        print("{} get temperature {}".format(loc, local_temp))  
         record = {
-            'sensor': "95132,us",
+            'sensor': loc,
             'datetime': datetime.datetime.now(),
             'temp': local_temp
         }
@@ -58,9 +59,9 @@ class ThermalLogging:
 if __name__ == '__main__':
     t = ThermalLogging()
     while True:
-        t.startCollectTemp()
-        # sleep 1 hours
-        time.sleep(60*60)
+        t.startCollectTemp('95132,us')
+        # sleep 10 minutes.
+        time.sleep(60*10)
 
     
 

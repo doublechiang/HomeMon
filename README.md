@@ -23,7 +23,13 @@ define the key in the environment
 export WEATHER_APPKEY=[key]
 
 ### Use supervisord to daemonize the python program
-easy_install supervisor
+pip3 install supervisor
+$ supervisord -c ./supervisord.conf
+To restart the supervisord
+$ supervisorctl reread
+$ supervisorctl update
+$ supervisorctl stop all
+$ supervisorctl start all
 
 ## Agent board
 Raspberry board with thermal sensor DS18B20.
