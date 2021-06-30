@@ -34,10 +34,11 @@ export WEATHER_APPKEY=[key]
 pip3 install supervisor
 $ supervisord -c ./supervisord.conf
 To restart the supervisord
-$ supervisorctl reread
-$ supervisorctl update
-$ supervisorctl stop all
-$ supervisorctl start all
+$ supervisorctl -c ./supervisord.conf reread
+$ supervisorctl -c ./supervisord.conf update
+$ supervisorctl -c ./supervisord.conf stop all
+$ supervisorctl -c ./supervisord.conf start all
+
 
 ## Agent board
 Raspberry board with thermal sensor DS18B20.
@@ -50,7 +51,8 @@ w1-therm`
 Follow [DS18B20 not listed in /sys/bus/w1/devices](http://raspberrypi.stackexchange.com/questions/26623/ds18b20-not-listed-in-sys-bus-w1-devices)
 
 
-
+# Developemnt 
+$ scp jiangjunyu@macmini:~/HomeMon/temperature.sqlite .
 
 
 
