@@ -2,3 +2,4 @@ requests
 sqlalchemy
 pika
 supervisor
+google-api-python-client

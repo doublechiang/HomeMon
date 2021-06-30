@@ -1,4 +1,10 @@
-# thermal_logging
+# Home Monitoring
+
+A Home Monitoring server, currently support read weather temperature local and thermostate temperature.
+
+## Features
+### Tempearture module
+Show the historical temperature data in chart.
 recording the collect the temperature from sensor and saved in database, generate the plot
 
 ## Server Installation.
