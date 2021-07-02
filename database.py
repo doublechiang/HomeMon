@@ -10,6 +10,7 @@ class Database:
     _instance = None
     _session = None
     _conn = None
+    _engine = None
 
     DB='temperature.sqlite'
 
@@ -18,6 +19,7 @@ class Database:
             cls._instance = super(Database, cls).__new__(cls)
             # put any new init code here
             engine = db.create_engine("sqlite:///{}".format(Database.DB)) #Create test.sqlite automatically
+            cls._engine = engine
             conn = engine.connect()
 
             # create table
@@ -47,6 +49,9 @@ class Database:
 
     def getConn(self):
         return Database._conn
+
+    def getEngine(self):
+        return Database._engine
 
     def __init__(self):
         pass
