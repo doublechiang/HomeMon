@@ -19,6 +19,7 @@ import json
 
 class NestAgent:
     DEVICE_LIST_API="https://smartdevicemanagement.googleapis.com/v1/enterprises/{}/devices"
+    NEW_ACESS_TOKEN_API='https://www.googleapis.com/oauth2/v4/token'
     def get_device_list(self):
         """ Get the Device List Json string.
             return None if something wrong.
@@ -47,14 +48,13 @@ class NestAgent:
 
     def get_new_access_token(self):
         # do not have access token, renew it.4
-        url = 'https://www.googleapis.com/oauth2/v4/token'
         params = {
             'client_id' : self.client_id,
             'client_secret' : self.client_secret,
             'refresh_token' : self.refresh_token,
             'grant_type' : 'refresh_token'
         }
-        r =requests.post(url, params=params)
+        r =requests.post(NestAgent.NEW_ACESS_TOKEN_API, params=params)
         logging.info("get new token: {}".format(r.text))
         if r.status_code == 200:
             ret = json.loads(r.text)

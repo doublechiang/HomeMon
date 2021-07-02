@@ -1,34 +1,30 @@
 #!/usr/bin/env python3
-import sqlalchemy as db
-import datetime
+import datetime as datetime
 import time
-import dbhandler
+import logging
 
-
-import weather
+import agent_openweather as openweather
+# import agent_nest as nest
+import temperature
 
 class ThermalLogging:
-    """ Main program to handle house thermal logging.
-        Colect data, save to sqlite database
+    """ Main Daemon to continue collect temperature and save to database
     """
 
-    def startCollectTemp(self, loc):
-        w = weather.Weather(loc)
+    def startCollectTemp(self):
+        loc = '95132,us'
+        w = openweather.OpenWeather(loc)
         local_temp = w.getCurrentTemp()
-        print("{} get temperature {}".format(loc, local_temp))  
-        record = {
-            'sensor': loc,
-            'datetime': datetime.datetime.now(),
-            'temp': local_temp
-        }
-        dbhandler.DbHandler().save(**record)
-
-    
+        logging.info("{} get temperature {}".format(loc, local_temp))  
+        # r = Temperature(loc, datetime.datetime.now(), local_temp)
+        r = temperature.Temperature('95132,us', datetime.datetime.now(), 24.0)
+        print (r)
+        r.save()
 
 if __name__ == '__main__':
     t = ThermalLogging()
     while True:
-        t.startCollectTemp('95132,us')
+        t.startCollectTemp()
         # sleep 10 minutes.
         time.sleep(60*10)
 
