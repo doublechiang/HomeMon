@@ -29,7 +29,6 @@ class Database:
                         db.Column('temp', db.Float(), default=100.0)
                         )
             metadata.create_all(engine) #Creates the table
-            temperature.Temperature.create(engine)
             
             cls._conn = conn
             Session = sessionmaker(bind=engine)
