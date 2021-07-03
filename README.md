@@ -7,6 +7,12 @@ A Home Monitoring server, currently support read weather temperature local and t
 Show the historical temperature data in chart.
 recording the collect the temperature from sensor and saved in database, generate the plot
 
+
+## Development environemnt.
+Install python3
+$ pip3 install -r requirements.txt
+
+
 ## Server Installation.
 $ brew install supervisor
 
@@ -16,15 +22,6 @@ Rabbit MQ server default is for local access only.
 
 #### create rabbitmq server username/password for remote access.
 Craete user by rabbitmqctl 
-
-### Install Grafana
-### setup InfluxDB
-CREATE DATABASE thermal
-brew install influxdb
-$ brew services start influxdb # to start influxdb as service
-$ INFLUXD_CONFIG_PATH=/usr/local/etc/influxdb2/config.yml influxd, to run as a process
-$ influx setup, to configure the influx
-$ influx org list, to show the configuration.
 
 ### To get weather
 define the key in the environment
