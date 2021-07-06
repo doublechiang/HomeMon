@@ -11,6 +11,11 @@ recording the collect the temperature from sensor and saved in database, generat
 ## Development environemnt.
 Install python3
 $ pip3 install -r requirements.txt
+$ export FLASK_APP=app.py (app.py is the default app, so it's not required to set this command.)
+$ export FLASK_ENV=development
+
+To run the server
+$ python -m flask run
 
 
 ## Server Installation.
