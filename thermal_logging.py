@@ -17,7 +17,7 @@ class ThermalLogging:
         local_temp = w.getCurrentTemp()
         logging.info("{} get temperature {}".format(loc, local_temp))  
         # r = Temperature(loc, datetime.datetime.now(), local_temp)
-        r = temperature.Temperature('95132,us', datetime.datetime.now(), 24.0)
+        r = temperature.Temperature('95132,us', datetime.datetime.now(), local_temp)
         r.save()
 
 
