@@ -4,3 +4,4 @@ supervisor
 google-api-python-client
 flask
 bokeh
+pandas
