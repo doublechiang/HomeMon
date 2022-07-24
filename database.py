@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+import psycopg2
 import sqlalchemy as db
 from sqlalchemy import table, column, insert
 from sqlalchemy.sql.sqltypes import DateTime
@@ -12,21 +14,26 @@ class Database:
     _conn = None
     _engine = None
 
-    DB='temperature.sqlite'
+    # DB='sqlite:///temperature.sqlite'
+    DB='postgresql+psycopg2://homemon:homemon@localhost/homemon'
 
     def __new__(cls):
         if cls._instance is None:
+
             cls._instance = super(Database, cls).__new__(cls)
             # put any new init code here
-            engine = db.create_engine("sqlite:///{}".format(Database.DB)) #Create test.sqlite automatically
+            db_url = os.environ['DATABASE_URL']
+            if db_url is None:
+                db_url = Database.DB
+            engine = db.create_engine(Database.DB) #Create test.sqlite automatically
             cls._engine = engine
             conn = engine.connect()
-
+            
             # create table
             metadata = db.MetaData()
 
             emp = db.Table('Temp', metadata,
-                        db.Column('sensor', db.Text(255), nullable=False),
+                        db.Column('sensor', db.String(32), nullable=False),
                         db.Column('datetime', db.DateTime, primary_key=True),
                         db.Column('temp', db.Float(), default=100.0)
                         )

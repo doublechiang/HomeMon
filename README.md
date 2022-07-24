@@ -17,8 +17,12 @@ $ export FLASK_ENV=development
 To run the server
 $ python -m flask run
 
-# Deployment
+## Database setup.
+Migrate from sqlite3 to postgres.
+Database table name homemon
 
+
+# Deployment
 
 ## Deploy to MAC
 $ brew install supervisor

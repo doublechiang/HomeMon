@@ -6,3 +6,4 @@ flask
 bokeh
 pandas
 gunicorn
+psycopg2
