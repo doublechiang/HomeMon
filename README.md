@@ -52,6 +52,7 @@ $ git push heroku master
 $ heroku addons:open scheduler
 
 ### Configuration environment variable
+
 $ heroku config:set WEATHER_APPKEY=....
 
 
