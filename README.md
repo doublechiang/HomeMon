@@ -18,7 +18,7 @@ To run the server
 $ python -m flask run
 
 
-## Server Installation.
+## Server Installation on MAC
 $ brew install supervisor
 
 ### Install RabbitMQ server
@@ -40,6 +40,10 @@ $ supervisorctl -c ./supervisord.conf reread
 $ supervisorctl -c ./supervisord.conf update
 $ supervisorctl -c ./supervisord.conf stop all
 $ supervisorctl -c ./supervisord.conf start all
+
+
+## Deployment to Heroku
+
 
 
 ## Agent board

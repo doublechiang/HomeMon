@@ -37,6 +37,7 @@ class ThermalLogging:
                 r.save()
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     t = ThermalLogging()
     while True:
         t.startCollectTemp()
