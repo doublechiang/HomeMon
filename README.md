@@ -17,8 +17,10 @@ $ export FLASK_ENV=development
 To run the server
 $ python -m flask run
 
+# Deployment
 
-## Server Installation on MAC
+
+## Deploy to MAC
 $ brew install supervisor
 
 ### Install RabbitMQ server
@@ -43,7 +45,11 @@ $ supervisorctl -c ./supervisord.conf start all
 
 
 ## Deployment to Heroku
+$ heroku login
+$ git push heroku master
 
+### Configure the Heoku scheduler
+$ heroku addons:open scheduler
 
 
 ## Agent board
