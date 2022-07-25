@@ -28,7 +28,8 @@ class Database:
                 db_url = Database.DB
             else:
                 db_url += '?sslmode=require'
-                db_url.replace('postgres://', 'postgresql://')    
+                db_url.replace('postgres://', 'postgresql://')
+            print(f"db_url is: {db_url}")    
             engine = db.create_engine(db_url) #Create test.sqlite automatically
             cls._engine = engine
             conn = engine.connect()
