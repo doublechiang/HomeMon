@@ -25,7 +25,7 @@ class Database:
             db_url = os.environ['DATABASE_URL']
             if db_url is None:
                 db_url = Database.DB
-            engine = db.create_engine(Database.DB) #Create test.sqlite automatically
+            engine = db.create_engine(db_url) #Create test.sqlite automatically
             cls._engine = engine
             conn = engine.connect()
             
