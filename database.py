@@ -22,14 +22,13 @@ class Database:
 
             cls._instance = super(Database, cls).__new__(cls)
             # put any new init code here
-            db_url = os.environ['DATABASE_URL']
+            db_url = os.environ.get('DATABASE_URL')
             
             if db_url is None:
                 db_url = Database.DB
             else:
                 db_url += '?sslmode=require'
                 db_url = db_url.replace('postgres://', 'postgresql://')
-            print(f"db_url is: {db_url}")    
             engine = db.create_engine(db_url) #Create test.sqlite automatically
             cls._engine = engine
             conn = engine.connect()
