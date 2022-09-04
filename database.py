@@ -5,6 +5,7 @@ import sqlalchemy as db
 from sqlalchemy import table, column, insert
 from sqlalchemy.sql.sqltypes import DateTime
 from sqlalchemy.orm import sessionmaker
+import logging
 
 import temperature
 
@@ -31,7 +32,12 @@ class Database:
                 db_url = db_url.replace('postgres://', 'postgresql://')
             engine = db.create_engine(db_url) #Create test.sqlite automatically
             cls._engine = engine
-            conn = engine.connect()
+            try:
+                conn = engine.connect()
+            except:
+                logging.error('Database connection error')
+                return cls._instance
+            
             
             # create table
             metadata = db.MetaData()

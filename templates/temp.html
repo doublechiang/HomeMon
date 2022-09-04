@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <title>Document</title>
-  {{ js_resources|indent(4)|safe }}
-  {{ css_resources|indent(4)|safe }}
-  {{ plot_script|indent(4)|safe }}
 </head>
 <style>
   footer {
@@ -17,10 +14,18 @@
   }
 </style>
 <body>
-  <h1 style="text-align: center; margin-bottom: 40px;">Home Monitoring Temperature</h1>
-  <div style="display: flex; justify-content: center;">
-      {{ plot_div|indent(4)|safe }}
-  </div>
+  {% if error %}
+    <h1 style="color:red;">{{ error }}</h1>
+  {% else %}
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+
+    <h1 style="text-align: center; margin-bottom: 40px;">Home Monitoring Temperature</h1>
+    <div style="display: flex; justify-content: center;">
+        {{ plot_div|indent(4)|safe }}
+    </div>
+  {% endif %}
 </body>
 <hr class="solid">
 <footer>

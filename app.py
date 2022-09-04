@@ -24,6 +24,10 @@ app.config['APPLICATION_ROOT'] = 'HomeMon'
 @app.route('/', methods=['get', 'post'])
 def root():
     conn = dblyr.Database().getConn()
+    if conn is None:
+        error = 'can not get database connection, check if service was started or not?'
+        return render_template('temp.html', error=error)
+
     engine = dblyr.Database().getEngine()
 
     s = select(temperature.Temperature).where(temperature.Temperature.sensor == '95132,us')
